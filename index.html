@@ -3,21 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vue JS 3 </title>
+    <title>Vue JS 3</title>
     <link rel="stylesheet" href="style.css" />
     <script src="vue.global.js"></script>
   </head>
   <body>
     <header>
-      <h2>Vue JS 3 </h2>
+      <h2>Vue JS 3</h2>
     </header>
-
+    <h1 class="app-title">Ticket Booking App</h1>
     <div id="app">
-      
+      <div class="ticket-app">
+        <div class="ticket-app__top">
+          <div class="seat-states">
+            <div class="seat-state" v-for="(value,key) in seatStates">
+              <div
+                class="seat-state__color"
+                :style="{backgroundColor: value.color}"
+              ></div>
+              <div class="seat-state__text">{{ value.text }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="ticket-app__bottom"></div>
+      </div>
     </div>
-
     <script src="app.js"></script>
   </body>
 </html>
-
-
