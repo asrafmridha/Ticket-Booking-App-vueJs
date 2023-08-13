@@ -7,7 +7,7 @@ var app = Vue.createApp({
           color: "#ff0000",
         },
         available: {
-          text: "Available",
+          text: "available",
           color: "#fff",
         },
         booked: {
@@ -142,6 +142,25 @@ var app = Vue.createApp({
         },
       ],
     };
+  },
+  computed: {
+    selectedSeats() {
+      let sc = this.seats.filter((item) => item.type === "selected");
+      return sc;
+    },
+  },
+  methods: {
+    handleKey(i) {
+      let clickSeat = this.seats[i];
+      if (clickSeat.type === "sold") {
+        alert("This Seat Already Sold!");
+      } else if (clickSeat.type === "booked") {
+        alert("This Seat Booked Someon!");
+      } else {
+        clickSeat.type =
+          clickSeat.type === "selected" ? "available" : "selected";
+      }
+    },
   },
 });
 
