@@ -39,7 +39,8 @@
                         </tr>
                         <tr>
                             <th>Total Cost</th>
-                            <td>Tk. {{totalCost}}</td>
+                            <td v-if="appliedCoupon">Tk. {{ totalCost -appliedCoupon.discount }}</td>
+                            <td v-else>{{ totalCost }}</td>
                         </tr>
 
                     </table>

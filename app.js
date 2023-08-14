@@ -196,6 +196,17 @@ var app = Vue.createApp({
       }
       this.confirmed = true;
     },
+    resetData() {
+      this.confirmed = false;
+      this.name = "";
+      this.mobile = "";
+      this.appliedCoupon = null;
+      this.seats.forEach(seat => {
+        if (seat.type === "selected") {
+          seat.type = "sold";
+        }
+      });
+    }
   },
   watch: {
     couponCode(newValue, oldValue) {
