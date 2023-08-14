@@ -1,6 +1,9 @@
 var app = Vue.createApp({
   data() {
     return {
+      name: "",
+      mobile: "",
+      confirmed: false,
       appliedCoupon: null,
       couponCode: "",
       coupons: [
@@ -187,6 +190,12 @@ var app = Vue.createApp({
       //   clickSeat.type = "selected";
       // }
     },
+    confirm() {
+      if (this.name == "" && this.name == "") {
+        alert("Please Enter Name and Mobile");
+      }
+      this.confirmed = true;
+    },
   },
   watch: {
     couponCode(newValue, oldValue) {
@@ -198,7 +207,7 @@ var app = Vue.createApp({
           this.appliedCoupon = searchCoupons[0];
           this.couponCode = "";
         } else {
-          alert("Coupon Not Valid")
+          alert("Coupon Not Valid");
           this.couponCode = "";
           return;
         }
