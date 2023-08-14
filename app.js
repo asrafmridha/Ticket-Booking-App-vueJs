@@ -152,14 +152,21 @@ var app = Vue.createApp({
   methods: {
     handleKey(i) {
       let clickSeat = this.seats[i];
-      if (clickSeat.type === "sold") {
-        alert("This Seat Already Sold!");
-      } else if (clickSeat.type === "booked") {
-        alert("This Seat Booked Someon!");
-      } else {
-        clickSeat.type =
-          clickSeat.type === "selected" ? "available" : "selected";
+      if (clickSeat.type === "sold" || clickSeat.type === "booked") {
+        alert("You are not Select these Seat!");
+        return;
       }
+      if (this.selectedSeats.length > 2 && clickSeat.type === "available") {
+        alert("You Don't Select More than three seat At a Time!");
+        return;
+      }
+      //Ternary Operator
+      clickSeat.type = clickSeat.type === "selected" ? "available" : "selected";
+      // if (clickSeat.type === "selected") {
+      //   clickSeat.type = "available";
+      // } else {
+      //   clickSeat.type = "selected";
+      // }
     },
   },
 });

@@ -50,8 +50,28 @@
                         </div>
                     </div>
                 </div>
-                <div class="ticket-app__right">
-                {{ selectedSeats }}
+                <div class="ticket-app__instruction" v-if="selectedSeats.length===0">
+                    No Seat Selected <br/>
+                    Select Some Seats First
+                </div>
+                <div class="ticket-app__right" v-else>
+                    <div class="cart">
+                        <strong>Selected Seats</strong>
+                        <table  class="selected-seats">
+                            <thead>
+                                <tr>
+                                    <th>Seat</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(seat, i) in selectedSeats" :key="seat.name">
+                                    <td>{{ seat.name }}</td>
+                                    <td>{{ seat.price }}</td>  
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
